@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Amor ❤️</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      color: #9e5817;
+      background-color:#573e27e8; 
+      background-attachment: fixed;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2 {
+      margin-top: 40px;
+      font-size: 2.5em;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    #contador {
+      font-size: 1.5em;
+      margin-top: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -20px;
+        opacity: 0;
+        transform: translateX(0) rotate(45deg);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        transform: translateX(-50px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .carrossel {
+      width: 90%;
+      max-width: 400px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .carrossel img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+
+    .carrossel img.ativa {
+      display: block;
+    }
+
+    iframe {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>❤️ Juliana & Erick ❤️</h1>
+    <h2>Estamos juntos há:</h2>
+    <div id="contador">Carregando...</div>
+
+    <div class="carrossel">
+      <img class="ativa" src="Eu e meu Amor S2/1.jpg" alt="Foto 1"> <!-- 🖼️ Troque pelas suas fotos -->
+      <img src="Eu e meu Amor S2/2.jpg" alt="Foto 2">
+      <img src="Eu e meu Amor S2/3.jpg" alt="Foto 3">
+      <img src="Eu e meu Amor S2/4.jpg" alt="Foto 4">
+      <img src="Eu e meu Amor S2/5.jpg" alt="Foto 5">
+      <img src="Eu e meu Amor S2/6.jpg" alt="Foto 6">
+      <img src="Eu e meu Amor S2/7.jpg" alt="Foto 7">
+      <img src="Eu e meu Amor S2/8.jpg" alt="Foto 8">
+      <img src="Eu e meu Amor S2/9.jpg" alt="Foto 9">
+      <img src="Eu e meu Amor S2/10.jpg" alt="Foto 10">
+      <img src="Eu e meu Amor S2/11.jpg" alt="Foto 11">
+      <img src="Eu e meu Amor S2/12.jpg" alt="Foto 12">
+    </div>
+  </div>
+
+  <h2>Sempre que sentir saudades entre e aqueça um pouco o coração</h2>
+
+  <script>
+    function criarCoracoes() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(criarCoracoes, 150);
+  </script>
+
+  <script>
+    const inicio = new Date("2024-06-20T00:00:00");
+    function atualizarContador() {
+      const agora = new Date();
+      const diferenca = agora - inicio;
+
+      const segundosTotais = Math.floor(diferenca / 1000);
+      const dias = Math.floor(segundosTotais / (60 * 60 * 24));
+      const horas = Math.floor((segundosTotais % (60 * 60 * 24)) / (60 * 60));
+      const minutos = Math.floor((segundosTotais % (60 * 60)) / 60);
+      const segundos = segundosTotais % 60;
+
+      document.getElementById("contador").textContent = 
+        `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos 💖`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+
+  <script>
+    let slideAtual = 0;
+    const imagens = document.querySelectorAll('.carrossel img');
+
+    setInterval(() => {
+      imagens[slideAtual].classList.remove('ativa');
+      slideAtual = (slideAtual + 1) % imagens.length;
+      imagens[slideAtual].classList.add('ativa');
+    }, 5000);
+  </script>
+
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/gK1d7zNArJ0?autoplay=1&loop=1&playlist=gK1d7zNArJ0" frameborder="0" allow="autoplay"></iframe>
+</body>
+</html>
